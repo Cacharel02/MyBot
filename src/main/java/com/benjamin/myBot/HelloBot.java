@@ -40,22 +40,8 @@ public class HelloBot implements SpringLongPollingBot, LongPollingSingleThreadUp
     @Override
     public void consume(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
-            // Set variables
-            String message = update.getMessage().getText();
-            long chat_id = update.getMessage().getChatId();
-            String response_text = "";
-            if(message.startsWith("/")){
-                response_text = commandHandler.handle(message);
-            }else{
-                response_text = "I don't understand this command";
-            }
-            SendMessage response = SendMessage // Create a message object
-                    .builder()
-                    .chatId(chat_id)
-                    .text(response_text)
-                    .build();
             try {
-                telegramClient.execute(response); // Sending our message object to user
+                telegramClient.execute(commandHandler.handle(update)); // Sending our message object to user
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }

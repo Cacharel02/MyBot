@@ -4,6 +4,8 @@ package com.benjamin.myBot;
 import com.benjamin.myBot.service.ICommandHandler;
 import com.benjamin.myBot.service.impl.CommandHandlerImpl;
 import io.github.cdimascio.dotenv.Dotenv;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;
 import org.telegram.telegrambots.longpolling.BotSession;

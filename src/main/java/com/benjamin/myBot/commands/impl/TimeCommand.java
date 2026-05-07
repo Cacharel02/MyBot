@@ -14,7 +14,7 @@ public class TimeCommand implements Command {
     }
 
     @Override
-    public String execute() {
+    public String execute(String... args) {
         return "Il est actuellement " + LocalTime.now().format(DateTimeFormatter.ofPattern("HH'h' mm'min' ss's'"));
     }
 }
